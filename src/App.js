@@ -2,13 +2,14 @@ import React from "react";
 import Header from "./Header/Header";
 import IntroText from "./IntroText/IntroText";
 import Products from "./Products/Products";
+
+import styles from "./App.css";
 const app = () => {
   return (
-    <div>
+    <div className={styles.App}>
       <Header />
       <IntroText />
       <Products />
-      <p>Test from App.js</p>
     </div>
   );
 };

@@ -1,0 +1,37 @@
+.Product {
+  width: 300px;
+  background-color: #ccc;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.ID {
+  background-color: black;
+  color: white;
+  font-size: 10px;
+  text-align: left;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 5px;
+}
+
+.ASCII {
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.Price {
+  float: right;
+  font-size: 15px;
+  color: green;
+  padding: 15px;
+}
+
+.Size {
+  float: center;
+  font-size: 15px;
+  padding-top: 15px;
+}

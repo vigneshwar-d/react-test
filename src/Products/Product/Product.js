@@ -1,13 +1,21 @@
 import React from "react";
+import styles from "./Product.css";
 
 const product = props => {
+  const inlineStyle = {
+    fontSize: props.size + "PX"
+  };
   return (
-    <div>
-      ID: {props.id}
+    <div className={styles.Product}>
+      <div className={styles.ID}>Product ID: {props.id}</div>
       <br />
-      ASCII: {props.face}
+      <div className={styles.ASCII} style={inlineStyle}>
+        {props.face}
+      </div>
       <br />
-      PRICE: {props.price}
+      <div className={styles.Size}>Size: {props.size}</div>
+      <br />
+      <div className={styles.Price}>${props.price}</div>
     </div>
   );
 };
