@@ -1,12 +1,14 @@
 .Product {
   width: 300px;
-  background-color: #ccc;
+  height: 250px;
+  background-color: #eee;
   border-radius: 15px;
   display: inline-block;
-  margin: 10px;
+  margin: 5px;
 }
 
 .ID {
+  position: relative;
   background-color: black;
   color: white;
   font-size: 10px;
@@ -18,19 +20,20 @@
 }
 
 .ASCII {
-  padding: 5px;
-  font-size: 30px;
+  position: relative;
   text-align: center;
 }
 
 .Price {
+  position: relative;
   float: right;
   font-size: 15px;
   color: green;
-  padding: 15px;
+  padding: 5px;
 }
 
 .Size {
+  position: relative;
   float: center;
   font-size: 15px;
   padding-top: 15px;

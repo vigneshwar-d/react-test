@@ -1,0 +1,20 @@
+.Ad {
+  width: 300px;
+  height: 250px;
+  background-color: #eee;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 5px;
+}
+
+.Advertisement {
+  float: left;
+  font-size: 10px;
+}
+
+.Image {
+  width: 300px;
+  height: 250px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}

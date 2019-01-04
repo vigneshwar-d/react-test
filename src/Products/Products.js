@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Product from "./Product/Product";
+import Ad from "../Ad/Ad";
 import Axios from "axios";
 
 import styles from "./Products.css";
@@ -15,9 +16,8 @@ class Products extends Component {
 
   getProducts() {
     let products = Axios.get(
-      "http://localhost:3000/api/products?_page=1&_limit=51"
+      "http://localhost:3000/api/products?_page=0&_limit=25"
     ).then(response => {
-      console.log(response.data);
       this.setState({ hasProducts: true, products: response.data });
     });
   }
@@ -26,19 +26,42 @@ class Products extends Component {
     if (this.state.hasProducts === false) {
       this.getProducts();
     } else {
-      productsToShow = this.state.products.map(item => {
-        return (
-          <Product
-            key={item.id}
-            id={item.id}
-            face={item.face}
-            price={item.price}
-            size={item.size}
-          />
-        );
+      productsToShow = this.state.products.map((item, index) => {
+        if (index !== 0 && index % 20 === 0) {
+          return (
+            <div>
+              <br />
+              <Ad />
+              <br />
+            </div>
+          );
+        } else {
+          return (
+            <Product
+              key={item.id}
+              id={item.id}
+              face={item.face}
+              price={item.price}
+              size={item.size}
+            />
+          );
+        }
       });
     }
-    return <div className={styles.Products}>{productsToShow}</div>;
+    return (
+      <div>
+        <div className={styles.SortByDropDown}>
+          Sort by:{" "}
+          <select>
+            <option default>--none--</option>
+            <option>Size</option>
+            <option>Price</option>
+            <option>Id</option>
+          </select>
+        </div>
+        <div className={styles.Products}>{productsToShow}</div>
+      </div>
+    );
   }
 }
 
