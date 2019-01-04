@@ -5,6 +5,9 @@ const product = props => {
   const inlineStyle = {
     fontSize: props.size + "PX"
   };
+  const price = "" + props.price + "";
+  var output = [price.slice(0, 1), ".", price.slice(1)].join("");
+  console.log(output);
   return (
     <div className={styles.Product}>
       <div className={styles.ID}>Product ID: {props.id}</div>
@@ -15,7 +18,7 @@ const product = props => {
       <br />
       <div className={styles.Size}>Size: {props.size}</div>
       <br />
-      <div className={styles.Price}>${props.price}</div>
+      <div className={styles.Price}>${output}</div>
     </div>
   );
 };
