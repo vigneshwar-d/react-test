@@ -5,6 +5,7 @@ import Axios from "axios";
 
 import styles from "./Products.css";
 
+let productsURL = "http://localhost:3000/api/products?_page=0&_limit=25";
 class Products extends Component {
   constructor(props) {
     super(props);
@@ -14,13 +15,34 @@ class Products extends Component {
     };
   }
 
-  getProducts() {
-    let products = Axios.get(
-      "http://localhost:3000/api/products?_page=0&_limit=25"
-    ).then(response => {
+  getProducts = () => {
+    console.log("getProducts fired");
+    let products = Axios.get(productsURL).then(response => {
       this.setState({ hasProducts: true, products: response.data });
     });
-  }
+  };
+
+  sortHandler = () => {
+    let sortByValue = document.getElementById("sortID").value;
+    if (sortByValue === "size") {
+      console.log("Sorting by size");
+      productsURL =
+        "http://localhost:3000/api/products?_page=0&_limit=25&_sort=size";
+      this.getProducts();
+    }
+    if (sortByValue === "price") {
+      console.log("Sorting by size");
+      productsURL =
+        "http://localhost:3000/api/products?_page=0&_limit=25&_sort=price";
+      this.getProducts();
+    }
+    if (sortByValue === "id") {
+      console.log("Sorting by size");
+      productsURL =
+        "http://localhost:3000/api/products?_page=0&_limit=25&_sort=id";
+      this.getProducts();
+    }
+  };
   render() {
     let productsToShow = null;
     if (this.state.hasProducts === false) {
@@ -52,11 +74,11 @@ class Products extends Component {
       <div>
         <div className={styles.SortByDropDown}>
           Sort by:{" "}
-          <select>
+          <select id="sortID" onChange={this.sortHandler}>
             <option default>--none--</option>
-            <option>Size</option>
-            <option>Price</option>
-            <option>Id</option>
+            <option value="size">Size</option>
+            <option value="price">Price</option>
+            <option value="id">Id</option>
           </select>
         </div>
         <div className={styles.Products}>{productsToShow}</div>
