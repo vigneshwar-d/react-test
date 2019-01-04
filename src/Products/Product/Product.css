@@ -26,7 +26,6 @@
 
 .Price {
   position: relative;
-  float: right;
   font-size: 15px;
   color: green;
   padding: 5px;
@@ -37,4 +36,11 @@
   float: center;
   font-size: 15px;
   padding-top: 15px;
+}
+
+.Date {
+  float: left;
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 10px;
 }

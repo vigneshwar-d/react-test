@@ -65,6 +65,7 @@ class Products extends Component {
               face={item.face}
               price={item.price}
               size={item.size}
+              date={item.date}
             />
           );
         }
