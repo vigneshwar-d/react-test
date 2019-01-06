@@ -15,5 +15,5 @@
 - [x] Automatically load more products as the user scrolls down.
 - [x] Display an animated loading message when new set of data is loading.
 - [x] Show advertisement for every 20th result.
-- [ ] Sort products by `size`, `price` and `ID`.
-- [ ] Show '~ end of catalogue ~ in the end.
+- [x] Sort products by `size`, `price` and `ID`.
+- [x] Show '~ end of catalogue ~ in the end.
