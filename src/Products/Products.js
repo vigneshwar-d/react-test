@@ -24,30 +24,17 @@ class Products extends Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   console.log("Component did mount called...");
-  //   this.refs.scrollEvent.addEventListener("scroll", () => {
-  //     if (
-  //       this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight >=
-  //       this.refs.iScroll.scrollHeight
-  //     ) {
-  //       this.getProducts();
-  //     }
-  //   });
-  // };
-
-  // loadMoreItems = () => {
-  //   console.log("loadMoreItems fired");
-  //   // this.setState({ loadingState: true });
-  //   let newProducts = Axios.get(
-  //     "http://localhost:3000/api/products?_page=30&_limit=40"
-  //   ).then(response => {
-  //     let newDataForProducts = this.state.products.concat(response.data);
-  //     this.setState({ products: newDataForProducts });
-  //     console.log("Products in state:" + this.state.products.length);
-  //   });
-  // };
-
+  componentDidMount() {
+    console.log("Component did mount called...");
+    window.onscroll = () => {
+      var d = document.documentElement;
+      var offset = d.scrollTop + window.innerHeight;
+      var height = d.offsetHeight;
+      if (offset === height) {
+        this.getProducts();
+      }
+    };
+  }
   getProducts = () => {
     console.log("getProducts fired");
 
@@ -92,7 +79,7 @@ class Products extends Component {
         "http://localhost:3000/api/products?_page=" +
         loadProductsFrom +
         "&_limit=" +
-        upto +
+        loadUpto +
         "&_sort=size";
       this.getProducts();
     }
@@ -101,7 +88,7 @@ class Products extends Component {
         "http://localhost:3000/api/products?_page=" +
         loadProductsFrom +
         "&_limit=" +
-        upto +
+        loadUpto +
         "&_sort=price";
       this.getProducts();
     }
@@ -117,6 +104,17 @@ class Products extends Component {
   };
   render() {
     console.log("Rendering...");
+    // let bottomCode = (<div>
+    //   let windowRelativeBottom = document.documentElement.getBoundingClientRect()
+    //     .bottom;
+    //   if (
+    //     !(windowRelativeBottom > document.documentElement.clientHeight + 100)
+    //   ) {
+    //     this.getProducts();
+    //   }
+    //   </div>
+    // );
+
     let productsToShow = null;
     if (this.state.hasProducts === false) {
       console.log("this.state.hasProducts is false");
@@ -164,7 +162,7 @@ class Products extends Component {
         </div>
 
         {/*Loading the products*/}
-        <div ref="scrollEvent" className={styles.Products}>
+        <div ref="scrolled" className={styles.Products}>
           {productsToShow}
         </div>
         <br />
@@ -174,9 +172,10 @@ class Products extends Component {
           </div>
         ) : (
           <div className={styles.LoaderAtBottom}>
-            <button onClick={this.getProducts} className={styles.LoadMore}>
+            {/* <button onClick={this.getProducts} className={styles.LoadMore}>
               Load more
-            </button>
+            </button> */}
+            {/* {bottomCode} */}
           </div>
         )}
       </div>
