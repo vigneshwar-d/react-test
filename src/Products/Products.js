@@ -45,7 +45,7 @@ class Products extends Component {
       let products = Axios.get(
         "http://localhost:3000/api/products?_page=" +
           loadProductsFrom +
-          "&_limit=5"
+          "&_limit=10"
       ).then(response => {
         console.log("hasProducts is true");
         console.log(
@@ -60,7 +60,7 @@ class Products extends Component {
       let products = Axios.get(
         "http://localhost:3000/api/products?_page=" +
           loadProductsFrom +
-          "&_limit=5"
+          "&_limit=10"
       ).then(response => {
         console.log("hasProducts is false");
         console.log(
@@ -73,48 +73,10 @@ class Products extends Component {
   };
 
   sortHandler = () => {
-    let sortByValue = document.getElementById("sortID").value;
-    if (sortByValue === "size") {
-      productsURL =
-        "http://localhost:3000/api/products?_page=" +
-        loadProductsFrom +
-        "&_limit=" +
-        loadUpto +
-        "&_sort=size";
-      this.getProducts();
-    }
-    if (sortByValue === "price") {
-      productsURL =
-        "http://localhost:3000/api/products?_page=" +
-        loadProductsFrom +
-        "&_limit=" +
-        loadUpto +
-        "&_sort=price";
-      this.getProducts();
-    }
-    if (sortByValue === "id") {
-      productsURL =
-        "http://localhost:3000/api/products?_page=" +
-        loadProductsFrom +
-        "&_limit=" +
-        upto +
-        "&_sort=id";
-      this.getProducts();
-    }
+    //TODO : -
   };
   render() {
     console.log("Rendering...");
-    // let bottomCode = (<div>
-    //   let windowRelativeBottom = document.documentElement.getBoundingClientRect()
-    //     .bottom;
-    //   if (
-    //     !(windowRelativeBottom > document.documentElement.clientHeight + 100)
-    //   ) {
-    //     this.getProducts();
-    //   }
-    //   </div>
-    // );
-
     let productsToShow = null;
     if (this.state.hasProducts === false) {
       console.log("this.state.hasProducts is false");
