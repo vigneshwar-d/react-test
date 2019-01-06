@@ -6,6 +6,10 @@
   padding-right: 10px;
 }
 
+.SortByDropDown {
+  padding: 20px;
+}
+
 .GIF {
   padding: 50px;
   width: 50px;
@@ -17,7 +21,8 @@
   text-align: center;
 }
 
-.LoadMore {
+.End {
   text-align: center;
   padding: 50px;
+  visibility: hidden;
 }

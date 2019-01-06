@@ -18,6 +18,7 @@ class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      hasReachedEndOfCatalogue: false,
       loadingState: false,
       hasProducts: false,
       products: []
@@ -26,6 +27,9 @@ class Products extends Component {
 
   componentDidMount() {
     console.log("Component did mount called...");
+    if (this.state.products.length >= 500) {
+      document.getElementById("end").style.visibility = "visible";
+    }
     window.onscroll = () => {
       var d = document.documentElement;
       var offset = d.scrollTop + window.innerHeight;
@@ -133,13 +137,11 @@ class Products extends Component {
             <img className={styles.GIF} src={LoadingGIF} />
           </div>
         ) : (
-          <div className={styles.LoaderAtBottom}>
-            {/* <button onClick={this.getProducts} className={styles.LoadMore}>
-              Load more
-            </button> */}
-            {/* {bottomCode} */}
-          </div>
+          <div />
         )}
+        <div id="end" className={styles.End}>
+          ~ end of catalogue ~
+        </div>
       </div>
     );
   }
