@@ -1,7 +1,7 @@
 .Product {
   width: 300px;
   height: 250px;
-  background-color: #eee;
+  background-color: rgb(246, 234, 250);
   border-radius: 15px;
   display: inline-block;
   vertical-align: bottom;
