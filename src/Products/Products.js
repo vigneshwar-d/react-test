@@ -18,6 +18,7 @@ class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sortingParameter: "",
       hasReachedEndOfCatalogue: false,
       loadingState: false,
       hasProducts: false,
@@ -41,7 +42,7 @@ class Products extends Component {
   }
   getProducts = () => {
     console.log("getProducts fired");
-
+    const sorter = this.state.sortingParameter;
     if (this.state.hasProducts === true) {
       this.setState({ loadingState: true });
       loadProductsFrom = loadProductsFrom + 5;
@@ -49,7 +50,8 @@ class Products extends Component {
       let products = Axios.get(
         "http://localhost:3000/api/products?_page=" +
           loadProductsFrom +
-          "&_limit=10"
+          "&_limit=10&_sort=" +
+          sorter
       ).then(response => {
         console.log("hasProducts is true");
         console.log(
@@ -64,7 +66,8 @@ class Products extends Component {
       let products = Axios.get(
         "http://localhost:3000/api/products?_page=" +
           loadProductsFrom +
-          "&_limit=10"
+          "&_limit=10&_sort=" +
+          sorter
       ).then(response => {
         console.log("hasProducts is false");
         console.log(
@@ -77,7 +80,14 @@ class Products extends Component {
   };
 
   sortHandler = () => {
-    //TODO : -
+    let sortByValue = document.getElementById("sortID").value;
+    loadProductsFrom = 0;
+    loadUpto = 0;
+    this.setState({
+      sortingParameter: sortByValue,
+      products: [],
+      hasProducts: false
+    });
   };
   render() {
     console.log("Rendering...");
@@ -110,7 +120,6 @@ class Products extends Component {
               date={item.date}
             />
           );
-          console.log("Item: " + item);
         }
       });
     }
